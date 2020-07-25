@@ -1,1 +1,10 @@
 # dji_manifold_z3
+
+## 硬件连接
+妙算1的CAM_IN连接Z3相机，CAM_OUT连接M100飞行器上的飞控即可。
+
+## 开环境
+需要先安装CUDA和OpenCV。妙算1计算单元其实是英伟达的TK1，英伟达基于OpenCV2.4为TK1适配了CPU和GPU硬件加速版本OpenCV4tegra。不过在安装OpenCV4tegra之前需要安装CUDA，适用于TK1的包：cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb。最后安装OpenCV4tegra，libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
+
+## 编程
+CUDA和OpenCV都安装完毕后就可以写程序读取图像了。在妙算自带的Ubuntu14.04系统中，大疆提供了Z3相机的驱动——dcam库文件。这个库文件提供了相机初始化、直接显示图像、读取NV12格式的图像buffer、转发图像到遥控器等接口。为了在妙算上读取Z3图像数据，进行二次开发，我们需要使用大疆提供的驱动接口，读取图像buffer并转换成OpenCV中的图像数据。接口函数在dcam库文件中实现了，因此我们在写自己程序的时候需要用extern关键字申明一下函数，然后在CMakeLists.txt文件中链接dcam库文件就可以了。
