@@ -11,7 +11,7 @@
 适用于TK1的CUDA：cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb。
 
 下载地址：http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb
-下载或安装并添加环境变量：
+安装并添加环境变量：
 
 ```
 sudo dpkg -i cuda-repo*.deb
